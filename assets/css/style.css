@@ -1486,3 +1486,92 @@ body.night .bill-line, body.night .bill-total {
 .err{display:none;color:var(--orange);font-size:13px;font-weight:800;}
 .input-box.bad .err{display:block;}
 .msg.error{color:var(--orange);}
+
+/* Dark mode image/layout fix for Menu and Offers */
+body.night .dish-list.grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+body.night .offers-grid {
+  grid-template-columns: 1fr;
+  max-width: 920px;
+}
+body.night .dish figure,
+body.night .offer-card .offer-photo,
+body.night .offer-card .food-img.small,
+body.night .offer-photo {
+  background: #141a11;
+  border-color: rgba(255, 248, 232, .18);
+  overflow: hidden;
+}
+body.night .dish figure {
+  min-height: 300px;
+  height: 300px;
+  padding: 0;
+}
+body.night .dish figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(.9) contrast(1.06) saturate(.96);
+  transform: none;
+}
+body.night .offer-card .offer-photo img,
+body.night .offer-card .food-img.small img,
+body.night .offer-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  transform: none;
+}
+body.night .offer-card .offer-photo,
+body.night .offer-card .food-img.small,
+body.night .offer-photo {
+  height: 390px;
+  min-height: 390px;
+}
+@media (max-width: 900px) {
+  body.night .dish-list.grid,
+  body.night .offers-grid {
+    grid-template-columns: 1fr;
+  }
+  body.night .dish figure {
+    min-height: 260px;
+    height: 260px;
+  }
+}
+@media (max-width: 760px) {
+  body.night .offer-card .offer-photo,
+  body.night .offer-card .food-img.small,
+  body.night .offer-photo {
+    height: 300px;
+    min-height: 300px;
+  }
+}
+
+
+/* Restored live offer countdown */
+.countdown {
+  align-items: center;
+  justify-content: center;
+  min-width: 205px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .3px;
+}
+.countdown.ended {
+  background: var(--cream-2);
+}
+body.night .countdown {
+  background: var(--yellow);
+  color: var(--ink);
+  border-color: var(--cream-2);
+  box-shadow: 5px 5px 0 rgba(255, 248, 232, .18);
+}
+body.night .countdown.ended {
+  background: #203b2a;
+  color: var(--cream-2);
+}
