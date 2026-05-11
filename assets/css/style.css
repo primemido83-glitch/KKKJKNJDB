@@ -1552,26 +1552,3 @@ body.night .offer-photo {
     min-height: 300px;
   }
 }
-
-
-/* Restored live offer countdown */
-.countdown {
-  align-items: center;
-  justify-content: center;
-  min-width: 205px;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: .3px;
-}
-.countdown.ended {
-  background: var(--cream-2);
-}
-body.night .countdown {
-  background: var(--yellow);
-  color: var(--ink);
-  border-color: var(--cream-2);
-  box-shadow: 5px 5px 0 rgba(255, 248, 232, .18);
-}
-body.night .countdown.ended {
-  background: #203b2a;
-  color: var(--cream-2);
-}

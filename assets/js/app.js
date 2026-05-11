@@ -82,34 +82,6 @@ function showBill() {
   receipt.innerHTML = lines.join('') + '<p class="bill-total"><span>Total</span><span>' + money(total) + '</span></p>';
   bill.classList.add('show');
 }
-function startCountdowns() {
-  $$('[data-clock]').forEach(clock => {
-    const seconds = Math.max(1, Number(clock.dataset.seconds) || 7200);
-    const key = 'freshOfferDeadline:' + location.pathname + ':' + seconds;
-    const now = Date.now();
-    let deadline = Number(localStorage.getItem(key) || 0);
-    if (!deadline || deadline <= now) {
-      deadline = now + seconds * 1000;
-      localStorage.setItem(key, String(deadline));
-    }
-    const paint = () => {
-      const left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-      if (left <= 0) {
-        clock.textContent = 'Offer ends soon';
-        clock.classList.add('ended');
-        return;
-      }
-      const hours = Math.floor(left / 3600);
-      const minutes = Math.floor((left % 3600) / 60);
-      const secs = left % 60;
-      const time = [hours, minutes, secs].map(unit => String(unit).padStart(2, '0')).join(':');
-      clock.textContent = 'Offer ends in ' + time;
-      clock.classList.remove('ended');
-    };
-    paint();
-    setInterval(paint, 1000);
-  });
-}
 function setTheme(mode) {
   document.body.classList.toggle('night', mode === 'night');
   localStorage.setItem('freshTheme', mode);
@@ -169,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setTheme(localStorage.getItem('freshTheme') === 'night' ? 'night' : 'day');
   drawCart();
   updateCartCount();
-  startCountdowns();
 });
 document.addEventListener('click', event => {
   const target = event.target;
